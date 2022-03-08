@@ -17,5 +17,4 @@ const postSchema = mongoose.Schema({
 
 const PostMessage = mongoose.model('PostMessage', postSchema);
 
-// export mongoose model from postmessage file and then on that model we will be able to run commands such as find, create, delete
 export default PostMessage

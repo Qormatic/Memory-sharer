@@ -11,11 +11,8 @@ import reducers from './reducers'
 import App from './App'
 import './index.css';
 
-// store meaning global state
 const store = createStore(reducers, compose(applyMiddleware(thunk)))
 
-// we pass ReactDOM the "App" component, (wrapped in "provider" which tracks state changes) 
-// and the line "document.getElementById('root')", which connects to the div with an id of 'root' in "index.html"
 ReactDOM.render(
     <Provider store={store}>
         <App />

@@ -20,8 +20,6 @@ const PostDetails = () => {
 	  dispatch(getPost(id));
 	}, [id]);
 	
-	// can have multiple useEffects in single functional component
-	// here we use "getPostsBySearch" to get recommended posts when the post id in the other useEffect changes
 	useEffect(() => {
 	  if (post) {
 		dispatch(getPostsBySearch({ search: 'none', tags: post?.tags.join(',') }));

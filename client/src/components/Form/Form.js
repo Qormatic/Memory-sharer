@@ -8,10 +8,7 @@ import ChipInput from 'material-ui-chip-input';
 import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
-// GET the current ID of the post we are on i.e: when user on frontend presses edit button we need to pass the id of the post
-// to our form component
-// e.preventdefault prevents refresh of browser when user submits
-// "?." checks if something is true
+
 const Form = ({ currentId, setCurrentId }) => {
     const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '' })
 	const post = useSelector((state) => currentId ? state.posts.posts.find((message) => message._id === currentId) : null);
@@ -43,8 +40,6 @@ const Form = ({ currentId, setCurrentId }) => {
 		}
 	  };
 
-	// if no current logged in user we display message
-	// "?." syntax means if something is undefined dont throw error
 	  if (!user?.result?.name) {
 		return (
 		  <Paper className={classes.paper}>
@@ -63,9 +58,6 @@ const Form = ({ currentId, setCurrentId }) => {
 		setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== chipToDelete) });
 	  };
     
-	// data is going to be stored in the state "postData"
-	// paper is like a <div> with white background
-	// ... below is "spread" syntax, which flexibly maps as many parameters as there are to the destination
     return (
 		<Paper className={classes.paper} elevation={6}>
 		  <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>

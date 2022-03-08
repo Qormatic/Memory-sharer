@@ -1,7 +1,4 @@
 import { FETCH_ALL, FETCH_POST, FETCH_BY_SEARCH, START_LOADING, END_LOADING, CREATE, UPDATE, DELETE, LIKE, COMMENT } from '../constants/actionTypes';
-
-// make use of the index.js file in the api folder
-// import * means we import everything from the actions as API. Allowing us to use API calls by "api.fetchPosts()" as below
 import * as api from '../api/index.js'
 
 export const getPost = (id) => async (dispatch) => {
@@ -17,12 +14,6 @@ export const getPost = (id) => async (dispatch) => {
 	}
   };
 
-// Redux-thunk used for async actions
-// Action Creators are functions that return actions, such as const "getPosts"
-// Action is just an object with "action type" and payload; which we dispatch below
-// redux thunk allows us create a function which uses another function; two arrow functions on next line
-// action is dipatched from app.js
-// { data } below is the destructured response which represents the posts
 export const getPosts = (page) => async (dispatch) => {
     try {
 		dispatch({ type: START_LOADING });
@@ -35,8 +26,6 @@ export const getPosts = (page) => async (dispatch) => {
     }
 };
 
-// "const { data: { data } }" we destructure the data twice, firsty because we are making an axios request and
-//...secondly to put it into a new object where it has the "data" property
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
 	try {
 	 dispatch({ type: START_LOADING });
@@ -97,7 +86,6 @@ export const updatePost = (id, post) => async (dispatch) => {
 		  dispatch({ type: COMMENT, payload: data });
 		
 		  console.log("commentPost: " + data)
-		  // contains response from API call with array holding all comments against the post, including that which just added
 		  return data.comments;
 		} catch (error) {
 		  console.log(error);

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grow, Grid, AppBar, TextField, Button, Paper } from '@material-ui/core';
-// "useDispatch" is a hook which allows us to to dispatch an action; we use "useDispatch" inside "useEffect"
 import { useDispatch } from 'react-redux';
-// useLocation tells us which page we are currently on
 import { useHistory, useLocation } from 'react-router-dom';
-// ChipInput is great for searching tags
 import ChipInput from 'material-ui-chip-input';
 
 import { getPostsBySearch } from '../../actions/posts';
@@ -13,7 +10,6 @@ import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import useStyles from './styles';
 
-// use useQuery as a hook
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
   }
@@ -21,7 +17,6 @@ function useQuery() {
 const Home = () => {
   const classes = useStyles();
   const query = useQuery();
-// const page is going to read our URL sand see if theres a page parameter; if no page parameter than it returns 1
   const page = query.get('page') || 1;
   const searchQuery = query.get('searchQuery');
 
@@ -33,8 +28,6 @@ const Home = () => {
   const [tags, setTags] = useState([]);
   const history = useHistory();
 
-// array can't be passed through url so we need to add ',' between tags
-// "||" means "or" -> we will search titles and/or tags
   const searchPost = () => {
     if (search.trim() || tags) {
       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
@@ -51,16 +44,10 @@ const Home = () => {
     }
   };
 
-// setTags is the state variable used in the frontend; tags is the state array where we store tags
-// here we spread the previous tags and add the new tag(s)
   const handleAddChip = (tag) => setTags([...tags, tag]);
 
   const handleDeleteChip = (chipToDelete) => setTags(tags.filter((tag) => tag !== chipToDelete));
 
-// grow is for indentation
-// we import posts and Form components and put in our container below
-// posts contains multiple post components
-// Home component handles pagination logic
   return (
     <Grow in>
       <Container maxWidth="xl">

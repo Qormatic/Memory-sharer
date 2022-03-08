@@ -24,7 +24,6 @@ const Navbar = () => {
 	setUser(null);
   };
 
-  // if token exists send it to the token variable
   useEffect(() => {
     const token = user?.token;
 
@@ -37,9 +36,6 @@ const Navbar = () => {
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
-  // if user doesnt have an avatar we want to display first letter of their name "{user?.result.name.charAt(0)}"
-  // "() : ()" is an if/else statement - below we show one block of code if user logged in, else we show the other
-  //...which is a link to our auth route so they can Sign In
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <Link to="/" className={classes.brandContainer}>

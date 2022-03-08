@@ -1,5 +1,4 @@
-// create constants for our action types as it's safer than using strings; avoids misspellings etc
-// error messages will tell us if we haven't defined a variable which makes it easier to debug
+
 
 export const CREATE = 'CREATE';
 export const UPDATE = 'UPDATE';

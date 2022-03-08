@@ -1,6 +1,5 @@
 // bcrypt is used to hash passwords. Makes passwords secuer, changing them from plain text
 import bcrypt from "bcryptjs";
-// jwt allows us to store user details for a defined period of time so if they close the page and reopen they can remain logged in
 import jwt from "jsonwebtoken";
 
 import UserModal from "../models/user.js";

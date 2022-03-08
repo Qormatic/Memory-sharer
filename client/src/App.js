@@ -7,11 +7,6 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
 
-// wrapping everything in BrowserRouter allows us to implement our React router with Switch wrapper (Routes in v6) around the routes
-// Switch wrapper (Routes in React-Router-Dom v6) means we will either show Home or Auth
-// path="/posts/:id" is to show an individual post's details
-// if user goes to main page we redirect them to "/posts"
-
 const App = () => {
 const user = JSON.parse(localStorage.getItem('profile'));
 

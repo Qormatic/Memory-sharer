@@ -12,7 +12,6 @@ const Paginate = ({ page }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  // run useEffect to fetchPosts anytime page changes
   useEffect(() => {
     if (page) {
       dispatch(getPosts(page));
